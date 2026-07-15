@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            color: white;
+            text-align: center;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        button {
+            background-color: #fff;
+            color: #ff758c;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            background-color: #ffe6e6;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Gaya untuk emoji yang berjatuhan */
+        .emoji {
+            position: absolute;
+            top: -50px;
+            font-size: 24px;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>🎉 HAPPY BIRTHADY MY BROTHER 🎂</h1>
+        <p>semoga Allah melancarkan segala urusanmu kedepannya dan kamu diberikan panjang umur mencapai cita citamu ya :></p>
+        <button onclick="hujanEmoji()">Pencet, jangan dilihatin doang kocak! 🥳</button>
+    </div>
+
+    <script>
+        function hujanEmoji() {
+            const daftarEmoji = ['🎂', '🎉', '🎁', '🎈', '✨', '💖', '⭐', '🎊', '🍰', '💐'];
+            
+            for (let i = 0; i < 60; i++) {
+                const emojiElement = document.createElement('div');
+                emojiElement.classList.add('emoji');
+                
+                // Pilih emoji secara acak dari daftar
+                const randomIndex = Math.floor(Math.random() * daftarEmoji.length);
+                emojiElement.innerText = daftarEmoji[randomIndex];
+                
+                // Atur posisi acak dan ukuran acak
+                emojiElement.style.left = Math.random() * 100 + 'vw';
+                emojiElement.style.fontSize = Math.random() * 20 + 20 + 'px';
+                
+                // Atur durasi jatuh dan waktu mulai acak
+                const durasi = Math.random() * 3 + 2; // antara 2 hingga 5 detik
+                emojiElement.style.animationDuration = durasi + 's';
+                emojiElement.style.animationDelay = Math.random() * 2 + 's';
+                
+                document.body.appendChild(emojiElement);
+                
+                // Hapus elemen setelah animasi selesai agar tidak membebani memori
+                setTimeout(() => {
+                    emojiElement.remove();
+                }, (durasi + 2) * 1000);
+            }
+        }
+    </script>
+</body>
+</html>
